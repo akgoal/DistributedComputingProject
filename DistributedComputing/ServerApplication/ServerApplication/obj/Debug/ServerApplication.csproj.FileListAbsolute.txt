@@ -1,0 +1,9 @@
+C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\bin\Debug\ServerApplication.exe.config
+C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\bin\Debug\ServerApplication.exe
+C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\bin\Debug\ServerApplication.pdb
+C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.Properties.Resources.resources
+C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.csproj.GenerateResource.Cache
+C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.exe
+C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.pdb
+C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.GUIForm.resources
