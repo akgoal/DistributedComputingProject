@@ -15,7 +15,7 @@ namespace ServerApplication
         public GUIForm()
         {
             InitializeComponent();
-            GUIHelper.StartServer();
+            //GUIHelper.StartServer();
         }
 
         public void InvokeLog(string str)
@@ -26,6 +26,16 @@ namespace ServerApplication
         public void Log(string str)
         {
             richTextBox.Text += str + "\n";
+        }
+
+        private void GUIForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+         //   GUIHelper.StopServer();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GUIHelper.StartServer();
         }
     }
 }

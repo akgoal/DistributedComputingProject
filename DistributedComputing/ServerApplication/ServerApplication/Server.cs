@@ -32,6 +32,7 @@ namespace ServerApplication
         /* Запуск сервера */
         public static void StartThread()
         {
+            Thread.Sleep(100);
             Settings.GetInstance().SetRangeLength(GUIHelper.GetRangeLength());
             task = new Task(GUIHelper.GetTaskNumber());
 
@@ -39,7 +40,7 @@ namespace ServerApplication
 
             try
             {
-                // StartListening();
+                StartListening();
             }
             catch (Exception ex)
             {
@@ -86,14 +87,16 @@ namespace ServerApplication
                 if (subtaskRequested)
                 {
                     GUIHelper.LogRequestReceived();
-                    if (!task.IsCalculated())
+                    Task.Subtask subtask = task.GetSubtask();
+                    if (subtask != null)
                     {
-                        Task.Subtask subtask = task.GetSubtask();
                         GUIHelper.LogSendingSubtask(subtask);
                         byte[] msg = task.GetSubtaskAsBytes(subtask);
                         handler.Send(msg);
                         task.SetSubtaskInProcess(subtask);
                     }
+                    else
+                        GUIHelper.LogNoAvailableSubtasks();
                 }
 
                 // Закрытие соединения
