@@ -24,13 +24,15 @@ namespace ServerApplication
         /* Получение длины отрезка чисел, отправляемого клиенту */
         public static long GetRangeLength()
         {
-            return 100;
+            return Settings.GetInstance().GetForm().GetRange();
+           // return 100;
         }
 
         /* Получение проверямого числа */
         public static long GetTaskNumber()
         {
-            return 15485867;
+            //return 15485867;
+            return Settings.GetInstance().GetForm().GetNumber();
         }
 
 

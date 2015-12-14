@@ -7,3 +7,12 @@ C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\
 C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.exe
 C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.pdb
 C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.GUIForm.resources
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\bin\Debug\ServerApplication.exe.config
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.exe
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.pdb
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\bin\Debug\ServerApplication.exe
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\bin\Debug\ServerApplication.pdb
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.GUIForm.resources
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.Properties.Resources.resources
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.csproj.GenerateResource.Cache

@@ -12,6 +12,7 @@ namespace ServerApplication
     public partial class GUIForm : Form
     {
         delegate void LogDelegate(string str);
+       
         public GUIForm()
         {
             InitializeComponent();
@@ -33,9 +34,33 @@ namespace ServerApplication
          //   GUIHelper.StopServer();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_start_Click(object sender, EventArgs e)
         {
-            GUIHelper.StartServer();
+            if (textBox_task.Text == "" || textBox_range.Text == "")
+                MessageBox.Show("Empty fields! Please enter the data");
+            else
+            {
+                GUIHelper.StartServer();
+            }
         }
+
+        private void button_stop_Click(object sender, EventArgs e)
+        {
+            GUIHelper.StopServer();
+        }
+
+        public long GetNumber()
+        {
+            long num = Convert.ToInt64(textBox_task.Text);
+            return num;
+        }
+
+        public int GetRange()
+        {
+            int range = Convert.ToInt32(textBox_range.Text);
+            return range;
+        }
+
+
     }
 }
