@@ -14,6 +14,9 @@ namespace ClientApplication
     {
         /* Класс описания работы клиента */
 
+        /* Индикатор рабочего состония */
+        private static bool IsWorking = false;
+
         /* Поток работы сервера */
         private static Thread clientThread;
 
@@ -23,9 +26,15 @@ namespace ClientApplication
         /* Удаленная точка */
         private static IPEndPoint ipEndPoint;
 
+        /* Сокет для соединения с сервером */
+        private static Socket sender;
+
         /* Запуск потока работы клиента */
         public static void Start()
         {
+            // Убеждаемся, что клиент не работает
+            while (clientThread!=null && clientThread.IsAlive) ;
+            IsWorking = true;
             clientThread = new Thread(StartThread);
             clientThread.Start();
         }
@@ -33,8 +42,6 @@ namespace ClientApplication
         /* Запуск клиента */
         public static void StartThread()
         {
-            Thread.Sleep(100);
-
             GUIHelper.LogConfiguratingClient();
 
             system = new SystemHelper();
@@ -46,7 +53,7 @@ namespace ClientApplication
                 if (RequestIsPermitted())
                 {
                     Task task = SendRequestAndReceiveTask();
-                    if (task.IsProper())
+                    if (task!=null && task.IsProper())
                     {
                         task.CalculateResult();
                         SendResult(task);
@@ -87,7 +94,8 @@ namespace ClientApplication
                 int port = 11000;
                 ipEndPoint = new IPEndPoint(ipAddr, port);
 
-                Socket sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                // !
+                sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
                 // Соединение сокета с удаленным устройством
                 sender.Connect(ipEndPoint);
@@ -108,13 +116,26 @@ namespace ClientApplication
 
                 return task;
             }
-            catch (Exception ex)
+            catch (SocketException ex)
             {
-                GUIHelper.LogServerIsUnavailable(true);
-                Thread.Sleep(2000);
-                return SendRequestAndReceiveTask();
+                // Недоступен сервер
+                if (ex.ErrorCode == (int)SocketError.ConnectionRefused)
+                {
+                    GUIHelper.LogServerIsUnavailable(true);
+
+                    Thread.Sleep(2000);
+
+                    // Если вызвано завершение работы клиента
+                    if (!IsWorking)
+                        return null;
+
+                    // Повторная отправка запроса
+                    return SendRequestAndReceiveTask(); ;
+                }
+                return null;
             }
         }
+
 
         /* Формирование сообщения.
          * Формируется сообщение вида [id, res], где id - идентификатор задания task, res - результат
@@ -144,7 +165,8 @@ namespace ClientApplication
                 int port = 11000;
                 ipEndPoint = new IPEndPoint(ipAddr, port);
 
-                Socket sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                //!
+                sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
                 // Соединение сокета с удаленным устройством
                 sender.Connect(ipEndPoint);
@@ -179,16 +201,12 @@ namespace ClientApplication
             }
         }
 
-        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-            GUIHelper.Log("sfsdfs");
-        }
-
         /* Остановка работы клиента */
         public static void Stop()
         {
+            IsWorking = false;
+            sender.Close();
             clientThread.Abort();
-            clientThread = null;
             GUIHelper.LogClientStopped();
         }
     }
