@@ -20,9 +20,6 @@ namespace ClientApplication
         /* Поток работы сервера */
         private static Thread clientThread;
 
-        /* Помощник в работе с системой */
-        private static SystemHelper system;
-
         /* Удаленная точка */
         private static IPEndPoint ipEndPoint;
 
@@ -42,9 +39,6 @@ namespace ClientApplication
         /* Запуск клиента */
         public static void StartThread()
         {
-            GUIHelper.LogConfiguratingClient();
-
-            system = new SystemHelper();
             Settings.GetInstance().SetDelayInterval(GUIHelper.GetDelayInterval());
             Settings.GetInstance().SetPermissibleCPULimit(GUIHelper.GetPermissibleCPULimit());
 
@@ -73,8 +67,8 @@ namespace ClientApplication
          * Конкретно, проверяется загруженность процессора. */
         private static bool RequestIsPermitted()
         {
-            float CPUUsage = system.GetCPUUsage();
-            if (system.GetCPUUsage() > Settings.GetInstance().GetPermissibleCPULimit())
+            float CPUUsage = SystemHelper.GetCPUUsage();
+            if (SystemHelper.GetCPUUsage() > Settings.GetInstance().GetPermissibleCPULimit())
             {
                 GUIHelper.LogHighCPUUsage(CPUUsage);
                 return false;
@@ -123,6 +117,7 @@ namespace ClientApplication
                 {
                     GUIHelper.LogServerIsUnavailable(true);
 
+                    // Пауза на две секунды
                     Thread.Sleep(2000);
 
                     // Если вызвано завершение работы клиента
@@ -204,10 +199,13 @@ namespace ClientApplication
         /* Остановка работы клиента */
         public static void Stop()
         {
-            IsWorking = false;
-            sender.Close();
-            clientThread.Abort();
-            GUIHelper.LogClientStopped();
+            if (IsWorking)
+            {
+                IsWorking = false;
+                sender.Close();
+                clientThread.Abort();
+                GUIHelper.LogClientStopped();
+            }
         }
     }
 }

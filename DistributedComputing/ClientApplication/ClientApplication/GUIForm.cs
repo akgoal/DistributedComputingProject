@@ -16,7 +16,6 @@ namespace ClientApplication
         public GUIForm()
         {
             InitializeComponent();
-          //  GUIHelper.StartClient();
         }
 
         public void InvokeLog(string str)
@@ -37,6 +36,21 @@ namespace ClientApplication
         private void button1_Click(object sender, EventArgs e)
         {
             GUIHelper.StartClient();
+        }
+
+        private void GUIForm_Load(object sender, EventArgs e)
+        {
+            GUIHelper.ConfigurateClient();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GUIHelper.StopClient();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            GUIHelper.Log("Загрузка ЦП: " + GUIHelper.GetCPUUsage());
         }
     }
 }

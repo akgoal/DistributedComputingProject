@@ -21,6 +21,21 @@ namespace ClientApplication
             Client.Stop();
         }
 
+        /* Предварительная настройка клиента */
+        public static void ConfigurateClient() 
+        {
+            Log("Настройка клиента");
+            /* Инициализация класса SystemHelper, позволяющего получить доступ к системной информации, 
+             *  в том числе к данным о загруженности процессора*/
+            SystemHelper.Init(new InitHandler());
+        }
+
+        /* Действия по завершении предварительной настройки клиента */
+        public static void ConfigurationComplete()
+        {
+            Log("Настройка клиента завершена");
+        }
+
         /* Получение времени задержки между попытками отправить запрос на сервер (в секундах) */
         public static int GetDelayInterval()
         {
@@ -32,6 +47,14 @@ namespace ClientApplication
         public static float GetPermissibleCPULimit()
         {
             return 80;
+        }
+
+        /* Загруженность процессора в процентах.
+         * Вызывается в GUI.
+         * Выбрасывает ошибку, если SystemHelper не инициализирован. */
+        public static float GetCPUUsage()
+        {
+            return SystemHelper.GetCPUUsage();
         }
 
         /* Следующие методы связаны с журналированием,
@@ -113,6 +136,15 @@ namespace ClientApplication
         public static void LogImproperTask()
         {
             Log("Некорректное задание");
+        }
+
+
+        public class InitHandler : SystemHelper.InitListener
+        {
+            public void OnInit()
+            {
+                GUIHelper.ConfigurationComplete();
+            }
         }
     }
 }
