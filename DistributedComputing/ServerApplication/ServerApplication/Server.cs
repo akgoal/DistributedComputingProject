@@ -25,6 +25,8 @@ namespace ServerApplication
         /* Запуск потока работы сервера */
         public static void Start()
         {
+            // Убеждаемся, что сервер не работает
+            while (serverThread != null && serverThread.IsAlive) ;
             serverThread = new Thread(StartThread);
             serverThread.Start();
         }
@@ -32,7 +34,6 @@ namespace ServerApplication
         /* Запуск сервера */
         public static void StartThread()
         {
-            Thread.Sleep(100);
             Settings.GetInstance().SetRangeLength(GUIHelper.GetRangeLength());
             task = new Task(GUIHelper.GetTaskNumber());
 
@@ -44,7 +45,7 @@ namespace ServerApplication
             }
             catch (Exception ex)
             {
-                GUIHelper.LogException(ex);
+                // Поток работы сервера был остановлен. Ничего страшного
             }
         }
 
@@ -131,8 +132,8 @@ namespace ServerApplication
         /* Остановка работы сервера */
         public static void Stop()
         {
+            socketListener.Close();
             serverThread.Abort();
-            serverThread = null;
             GUIHelper.LogServerStopped();
         }
     }
