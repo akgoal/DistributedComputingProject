@@ -26,11 +26,14 @@ namespace ClientApplication
         /* Сокет для соединения с сервером */
         private static Socket sender;
 
+        /* Выполняемое клиентом задание */
+        private static Task task;
+
         /* Запуск потока работы клиента */
         public static void Start()
         {
             // Убеждаемся, что клиент не работает
-            while (clientThread!=null && clientThread.IsAlive) ;
+            while (clientThread != null && clientThread.IsAlive) ;
             IsWorking = true;
             clientThread = new Thread(StartThread);
             clientThread.Start();
@@ -42,12 +45,19 @@ namespace ClientApplication
             Settings.GetInstance().SetDelayInterval(GUIHelper.GetDelayInterval());
             Settings.GetInstance().SetPermissibleCPULimit(GUIHelper.GetPermissibleCPULimit());
 
+            // Если осталось задание, выполняем его и посылаем результат
+            if (task != null && task.IsProper())
+            {
+                task.CalculateResult();
+                SendResult(task);
+            }
+
             while (true)
             {
                 if (RequestIsPermitted())
                 {
-                    Task task = SendRequestAndReceiveTask();
-                    if (task!=null && task.IsProper())
+                    task = SendRequestAndReceiveTask();
+                    if (task != null && task.IsProper())
                     {
                         task.CalculateResult();
                         SendResult(task);
@@ -88,7 +98,6 @@ namespace ClientApplication
                 int port = 11000;
                 ipEndPoint = new IPEndPoint(ipAddr, port);
 
-                // !
                 sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
                 // Соединение сокета с удаленным устройством
@@ -160,7 +169,6 @@ namespace ClientApplication
                 int port = 11000;
                 ipEndPoint = new IPEndPoint(ipAddr, port);
 
-                //!
                 sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
                 // Соединение сокета с удаленным устройством
@@ -175,11 +183,24 @@ namespace ClientApplication
                 sender.Shutdown(SocketShutdown.Both);
                 sender.Close();
             }
-            catch (Exception ex)
+            catch (SocketException ex)
             {
-                GUIHelper.LogServerIsUnavailable(false);
-                Thread.Sleep(2000);
-                SendResult(task);
+                // Недоступен сервер
+                if (ex.ErrorCode == (int)SocketError.ConnectionRefused)
+                {
+                    GUIHelper.LogServerIsUnavailable(true);
+
+                    // Пауза на две секунды
+                    Thread.Sleep(2000);
+
+                    // Если вызвано завершение работы клиента
+                    if (!IsWorking)
+                        return;
+
+                    // Повторная отправка результата
+                    SendResult(task);
+                }
+                return;
             }
         }
 
@@ -202,7 +223,8 @@ namespace ClientApplication
             if (IsWorking)
             {
                 IsWorking = false;
-                sender.Close();
+                if (sender!=null)
+                    sender.Close();
                 clientThread.Abort();
                 GUIHelper.LogClientStopped();
             }
