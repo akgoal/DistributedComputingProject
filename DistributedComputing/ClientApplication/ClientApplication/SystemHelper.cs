@@ -28,7 +28,7 @@ namespace ClientApplication
             initListener = listener;
             totalCPU = new PerformanceCounter("Processor", "% Processor Time", "_Total");
             totalCPU.NextValue();
-            System.Timers.Timer timer = new System.Timers.Timer(1000);
+            System.Timers.Timer timer = new System.Timers.Timer(2000);
             timer.Elapsed += OnTimedEvent;
             timer.Enabled = true;
             timer.AutoReset = false;

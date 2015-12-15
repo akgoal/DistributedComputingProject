@@ -45,16 +45,26 @@ namespace ServerApplication
             Settings.GetInstance().GetForm().InvokeLog(str);
         }
 
+        //public static void WaitLog()
+        //{
+        //    Settings.GetInstance().GetForm().InvokeWaitLog();
+        //}
+
         /* Вычисление задания task окончено. */
         public static void LogTaskIsCalculated(Task task)
         {
-            Log("Задание завершено " + task.GetResult());
+            string result;
+            if (task.GetResult() == 1)
+                result = " простое";
+            else
+                result = " непростое";
+            Log("Задание завершено: " + GetTaskNumber()+result);
         }
 
         /* Подзадания subtasks сформированы. */
         public static void LogSubTasksCreated(List<Task.Subtask> subtasks)
         {
-            Log("Подзадания сформированы: количество=" + subtasks.Count());
+            Log("Подзадания сформированы успешно! \r\nКоличество подзаданий=" + subtasks.Count());
         }
 
         /* Ошибка */
@@ -66,37 +76,42 @@ namespace ServerApplication
         /* Установка сокета */
         public static void LogSocketSetting()
         {
-            Log("Установка сокета");
+            Log("Установка сокета...");
         }
 
         /* Сокет установлен; ipAddr - ip-адрес, port - номер порта */
         public static void LogSocketIsSet(System.Net.IPAddress ipAddr, int port)
         {
-            Log("Сокет установлен");
+            Log("Сокет установлен!");
         }
 
         /* Ожидание соединения */
         public static void LogWaitingForConnections()
         {
-            Log("Ожидание соединения");
+            Log("Ожидание соединения...");
+           // WaitLog();
         }
 
         /* Получен запрос от клиента на получение подзадания */
         public static void LogRequestReceived()
         {
-            Log("Запрос получен");
+            Log("Запрос получен!");
         }
 
         /* Отправка подзадания subtask клиенту */
         public static void LogSendingSubtask(Task.Subtask subtask)
         {
-            Log("Отправка подзадания: from=" + subtask.getRange()[0] + " id=" + subtask.getId());
+            Log("Отправка подзадания id=" + subtask.getId() + ": Отрезок=[" + subtask.getRange()[0] 
+                + ";" + subtask.getRange()[1] + "]");
         }
 
         /* Получен результат result вычисления подзадания subtask */
         public static void LogSubtaskResultReceived(Task.Subtask subtask, long result)
         {
-            Log("Получен результат: res=" + result+" id="+subtask.getId());
+            if (result == 1)
+                Log("Получен результат подзадания id=" + subtask.getId() + ": Делителей нет");
+            else
+                Log("Получен результат подзадания id=" + subtask.getId() + ": Найден делитель " + result);
         }
 
         /* Сервер остановлен */
@@ -107,8 +122,8 @@ namespace ServerApplication
 
         /* Нет доступных подзаданий */
         public static void LogNoAvailableSubtasks()
-        { 
-            
+        {
+            Log("Нет доступных подзаданий для отправки");
         }
     }
 }

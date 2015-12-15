@@ -7,6 +7,8 @@ C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ClientApplication\
 C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.csproj.GenerateResource.Cache
 C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.exe
 C:\Users\sony\Desktop\Programing\C Sharp\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.pdb
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\bin\Debug\ClientApplication.exe.config
+C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.exe
 C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.pdb
 C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\bin\Debug\ClientApplication.exe
 C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\bin\Debug\ClientApplication.pdb

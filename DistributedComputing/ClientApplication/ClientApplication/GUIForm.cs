@@ -12,6 +12,8 @@ namespace ClientApplication
 {
     public partial class GUIForm : Form
     {
+        private bool state = false;
+
         delegate void LogDelegate(string str);
         public GUIForm()
         {
@@ -33,9 +35,20 @@ namespace ClientApplication
             GUIHelper.StopClient();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_state_Click(object sender, EventArgs e)
         {
-            GUIHelper.StartClient();
+            if (state)
+            {
+                GUIHelper.StopClient();
+                state = false;
+                button_state.Image = Properties.Resources.start;
+            }
+            else
+            {
+                GUIHelper.StartClient();
+                state = true;
+                button_state.Image = Properties.Resources.stop;
+            }
         }
 
         private void GUIForm_Load(object sender, EventArgs e)
@@ -43,14 +56,15 @@ namespace ClientApplication
             GUIHelper.ConfigurateClient();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            GUIHelper.StopClient();
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             GUIHelper.Log("Загрузка ЦП: " + GUIHelper.GetCPUUsage());
+        }
+
+        public void ShowButtons()
+        {
+            button_state.Visible = true;
+            button3.Visible = true;
         }
     }
 }
