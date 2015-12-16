@@ -38,6 +38,7 @@
             // 
             // richTextBox
             // 
+            this.richTextBox.Enabled = false;
             this.richTextBox.Location = new System.Drawing.Point(24, 103);
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.Size = new System.Drawing.Size(350, 210);

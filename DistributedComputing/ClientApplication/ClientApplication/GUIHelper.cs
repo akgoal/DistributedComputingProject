@@ -36,6 +36,12 @@ namespace ClientApplication
             Log("Настройка клиента завершена");
             //Settings.GetInstance().GetForm().ShowButtons(); //не срабатывает
             Settings.GetInstance().GetForm().InvokeShowButtons();
+            Settings.GetInstance().GetForm().InvokeShowCPULoad();
+        }
+
+        public static void UpdateCPULabel(float value)
+        {
+            Settings.GetInstance().GetForm().InvokeUpdateCPULabel(value);
         }
 
         /* Получение времени задержки между попытками отправить запрос на сервер (в секундах) */
@@ -48,7 +54,7 @@ namespace ClientApplication
          * при котором выполняется запрос задания (в процентах) */
         public static float GetPermissibleCPULimit()
         {
-            return 80;
+            return Settings.GetInstance().GetForm().InvokeGetCPULimit();
         }
 
         /* Загруженность процессора в процентах.
