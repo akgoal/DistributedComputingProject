@@ -40,14 +40,10 @@
             // 
             // richTextBox
             // 
-<<<<<<< HEAD
             this.richTextBox.Enabled = false;
-            this.richTextBox.Location = new System.Drawing.Point(24, 103);
-=======
             this.richTextBox.Location = new System.Drawing.Point(12, 12);
->>>>>>> origin/master
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(268, 210);
+            this.richTextBox.Size = new System.Drawing.Size(336, 210);
             this.richTextBox.TabIndex = 1;
             this.richTextBox.Text = "";
             this.richTextBox.TextChanged += new System.EventHandler(this.richTextBox_TextChanged);
@@ -55,7 +51,7 @@
             // button_state
             // 
             this.button_state.Image = global::ServerApplication.Properties.Resources.start;
-            this.button_state.Location = new System.Drawing.Point(303, 12);
+            this.button_state.Location = new System.Drawing.Point(354, 12);
             this.button_state.Name = "button_state";
             this.button_state.Size = new System.Drawing.Size(133, 61);
             this.button_state.TabIndex = 2;
@@ -116,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 380);
+            this.ClientSize = new System.Drawing.Size(499, 378);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_range);

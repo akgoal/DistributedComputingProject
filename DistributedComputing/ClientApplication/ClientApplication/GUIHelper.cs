@@ -24,7 +24,7 @@ namespace ClientApplication
         /* Предварительная настройка клиента */
         public static void ConfigurateClient() 
         {
-            Log("Настройка клиента");
+            Log("Настройка клиента...");
             /* Инициализация класса SystemHelper, позволяющего получить доступ к системной информации, 
              *  в том числе к данным о загруженности процессора*/
             SystemHelper.Init(new InitHandler());
@@ -33,8 +33,7 @@ namespace ClientApplication
         /* Действия по завершении предварительной настройки клиента */
         public static void ConfigurationComplete()
         {
-            Log("Настройка клиента завершена");
-            //Settings.GetInstance().GetForm().ShowButtons(); //не срабатывает
+            Log("Настройка клиента завершена!");
             Settings.GetInstance().GetForm().InvokeShowButtons();
             Settings.GetInstance().GetForm().InvokeShowCPULoad();
         }
@@ -42,6 +41,11 @@ namespace ClientApplication
         public static void UpdateCPULabel(float value)
         {
             Settings.GetInstance().GetForm().InvokeUpdateCPULabel(value);
+        }
+
+        public static void PaintCPULoad(float value)
+        {
+            Settings.GetInstance().GetForm().InvokePaintCPULoad(value);
         }
 
         /* Получение времени задержки между попытками отправить запрос на сервер (в секундах) */
@@ -90,31 +94,34 @@ namespace ClientApplication
          * CPUUsage - загруженность процессора в процентах */
         public static void LogHighCPUUsage(float CPUUsage)
         {
-            Log("Загруженный процессор");
+            Log("Загруженный процессор!");
         }
 
         /* Отправка запроса задания */
         public static void LogSendingRequest()
         {
-            Log("Отправка запроса");
+            Log("Отправка запроса...");
         }
 
         /* Отправка результата задания task */
         public static void LogSendingResult(Task task)
         {
-            Log("Отправка результата: res=" + task.GetResult()+" id="+task.GetId());
+            if (task.GetResult() == 1)
+                Log("Отправка результата id=" + task.GetId() + ": Делителей нет");
+            else
+                Log("Отправка результата id=" + task.GetId() + ": Делитель " + task.GetResult());
         }
 
         /* Получено задание task */
         public static void LogTaskReceived(Task task)
         {
-            Log("Задание получено: from=" + task.GetRange()[0] +" id="+task.GetId());
+            Log("Задание получено id=" + task.GetId() + ": Отрезок=[" + task.GetRange()[0] + ";" + task.GetRange()[1] + "]");
         }
 
         /* Сокет установлен; ipAddr - ip-адрес, port - номер порта */
         public static void LogSocketIsSet(System.Net.IPAddress ipAddr, int port)
         {
-            Log("Сокет установлен");
+            Log("Сокет установлен!");
         }
 
         /* Настройка клиента */
@@ -126,7 +133,7 @@ namespace ClientApplication
         /* Задержки в interval секунд до отправки запроса на сервер */
         public static void LogDelayBeforeRequest(int interval)
         {
-            Log("Задержка в " + interval + " сек");
+            Log("Задержка в " + interval + " сек...");
         }
 
         /* Сервер недоступен.
@@ -143,7 +150,7 @@ namespace ClientApplication
         /* Некорректное задание */
         public static void LogImproperTask()
         {
-            Log("Некорректное задание");
+            Log("Некорректное задание!");
         }
 
 

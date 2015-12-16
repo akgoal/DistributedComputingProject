@@ -20,10 +20,14 @@ namespace ClientApplication
         delegate int GetCPULimitDelegate();
         delegate void ShowCPULoadDelegate();
         delegate void UpdateCPULabelDelegate(float value);
+        delegate void PaintCPULoadDelegate(float value);
+
+        Graphics g;
 
         public GUIForm()
         {
             InitializeComponent();
+            g = panel1.CreateGraphics();
         }
 
         public void InvokeLog(string str)
@@ -64,18 +68,17 @@ namespace ClientApplication
             GUIHelper.ConfigurateClient();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            GUIHelper.Log("Загрузка ЦП: " + GUIHelper.GetCPUUsage());
-        }
 
         public void ShowButtons()
         {
             button_state.Visible = true;
-            button3.Visible = true;
             pictureBox1.Visible = false;
             trackBar1.Visible = true;
             label1.Visible = true;
+            label2.Text = "";
+            label2.Visible = true;
+            label3.Visible = true;
+            panel1.Visible = true;
         }
 
         public void InvokeShowButtons()
@@ -108,12 +111,8 @@ namespace ClientApplication
         private void UpdateCPUUsage(Object source, ElapsedEventArgs e)
         {
             float CPUUsage = GUIHelper.GetCPUUsage();
-            GUIHelper.Log("Загрузка ЦП: " + CPUUsage);
-           // float value=GUIHelper.GetCPUUsage();
-           // label2.Text = value.ToString();
-           // label2.Text = "ghjkl";
-           // label2.Refresh();
             GUIHelper.UpdateCPULabel(CPUUsage);
+            GUIHelper.PaintCPULoad(CPUUsage);
         }
 
         private void ShowCPULoad()
@@ -132,12 +131,22 @@ namespace ClientApplication
 
         private void UpdateCPULabel(float value)
         {
-            label2.Text = value.ToString();
-            //label2.Refresh();
+            label2.Text = value.ToString() + " %";
         }
         public void InvokeUpdateCPULabel(float value)
         {
             this.Invoke(new UpdateCPULabelDelegate(UpdateCPULabel), value);
+        }
+
+        private void PaintCPULoad(float value)
+        {
+            g.Clear(Color.White);
+            g.FillRectangle(Brushes.Green, 0, panel1.Height - value, panel1.Width, panel1.Height);
+        }
+
+        public void InvokePaintCPULoad(float value)
+        {
+            this.Invoke(new PaintCPULoadDelegate(PaintCPULoad), value);
         }
     }
 }
