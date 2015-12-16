@@ -107,12 +107,13 @@ namespace ClientApplication
 
         private void UpdateCPUUsage(Object source, ElapsedEventArgs e)
         {
-            GUIHelper.Log("Загрузка ЦП: " + GUIHelper.GetCPUUsage());
+            float CPUUsage = GUIHelper.GetCPUUsage();
+            GUIHelper.Log("Загрузка ЦП: " + CPUUsage);
            // float value=GUIHelper.GetCPUUsage();
            // label2.Text = value.ToString();
            // label2.Text = "ghjkl";
            // label2.Refresh();
-            GUIHelper.UpdateCPULabel(GUIHelper.GetCPUUsage());
+            GUIHelper.UpdateCPULabel(CPUUsage);
         }
 
         private void ShowCPULoad()
