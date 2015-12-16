@@ -34,6 +34,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_range = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // richTextBox
@@ -87,11 +89,31 @@
             this.textBox_range.Size = new System.Drawing.Size(214, 20);
             this.textBox_range.TabIndex = 6;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 322);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(199, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Число может находится в диапазоне ";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(21, 348);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(300, 20);
+            this.textBox1.TabIndex = 8;
+            this.textBox1.Text = "-9223372036854775808 : 9223372036854775807";
+            // 
             // GUIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 338);
+            this.ClientSize = new System.Drawing.Size(448, 380);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_range);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -114,6 +136,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_range;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }
