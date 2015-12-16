@@ -15,6 +15,7 @@ namespace ClientApplication
         private bool state = false;
 
         delegate void LogDelegate(string str);
+        delegate void ShowButtonsDelegate();
         public GUIForm()
         {
             InitializeComponent();
@@ -65,6 +66,11 @@ namespace ClientApplication
         {
             button_state.Visible = true;
             button3.Visible = true;
+        }
+
+        public void InvokeShowButtons()
+        {
+            this.Invoke(new ShowButtonsDelegate(ShowButtons));
         }
     }
 }

@@ -34,7 +34,8 @@ namespace ClientApplication
         public static void ConfigurationComplete()
         {
             Log("Настройка клиента завершена");
-            Settings.GetInstance().GetForm().ShowButtons(); //не срабатывает
+            //Settings.GetInstance().GetForm().ShowButtons(); //не срабатывает
+            Settings.GetInstance().GetForm().InvokeShowButtons();
         }
 
         /* Получение времени задержки между попытками отправить запрос на сервер (в секундах) */

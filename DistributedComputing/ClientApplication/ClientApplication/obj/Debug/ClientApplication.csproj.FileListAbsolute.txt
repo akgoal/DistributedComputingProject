@@ -16,3 +16,12 @@ C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComput
 C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.GUIForm.resources
 C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.Properties.Resources.resources
 C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.csproj.GenerateResource.Cache
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\bin\Debug\ClientApplication.exe.config
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.exe
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.pdb
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\bin\Debug\ClientApplication.exe
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\bin\Debug\ClientApplication.pdb
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.csprojResolveAssemblyReference.cache
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.GUIForm.resources
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.Properties.Resources.resources
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ClientApplication\ClientApplication\obj\Debug\ClientApplication.csproj.GenerateResource.Cache
