@@ -16,3 +16,6 @@ C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComput
 C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.GUIForm.resources
 C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.Properties.Resources.resources
 C:\Users\Амир\Documents\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.csproj.GenerateResource.Cache
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\bin\Debug\ServerApplication.exe.config
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.exe
+C:\Users\sony\Desktop\Programing\GitHub\DistributedComputingProject\DistributedComputing\ServerApplication\ServerApplication\obj\Debug\ServerApplication.pdb
